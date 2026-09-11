@@ -1,15 +1,10 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Duskwood — Crime & Detetive</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>One Piece — A Pior Geração</title>
 
     <style>
         * {
@@ -23,255 +18,390 @@
         }
 
         body {
+            font-family: Arial, Helvetica, sans-serif;
             background:
-                radial-gradient(circle at 50% 0%, #32105c 0%, #12091d 35%, #050307 75%);
-            color: #eee7f7;
-            font-family: 'Poppins', sans-serif;
+                radial-gradient(circle at 20% 20%, rgba(106, 31, 170, 0.35), transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(0, 119, 255, 0.20), transparent 30%),
+                linear-gradient(135deg, #050509, #10051c 45%, #03030a);
+            color: white;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* ---------- CABEÇALHO ---------- */
+        /* Fundo animado */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1px),
+                radial-gradient(circle, rgba(255,255,255,0.35) 1px, transparent 1px);
+            background-size: 90px 90px, 150px 150px;
+            animation: estrelas 25s linear infinite;
+            opacity: 0.25;
+            z-index: -1;
+        }
+
+        @keyframes estrelas {
+            from {
+                background-position: 0 0, 0 0;
+            }
+            to {
+                background-position: 500px 800px, -400px 500px;
+            }
+        }
 
         header {
-            min-height: 330px;
+            min-height: 470px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 60px 20px;
+            padding: 50px 20px;
             position: relative;
             overflow: hidden;
-            border-bottom: 1px solid rgba(160, 90, 255, 0.25);
         }
 
-        header::before {
+        header::after {
             content: "";
             position: absolute;
             width: 500px;
             height: 500px;
-            background: #8d35ff;
-            filter: blur(180px);
-            opacity: 0.13;
             border-radius: 50%;
+            border: 1px solid rgba(184, 92, 255, 0.25);
+            box-shadow:
+                0 0 80px rgba(131, 40, 255, 0.18),
+                inset 0 0 80px rgba(131, 40, 255, 0.12);
+            animation: orbita 12s linear infinite;
         }
 
-        .hero {
+        @keyframes orbita {
+            from {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(180deg) scale(1.08);
+            }
+            to {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        .logo {
             position: relative;
-            z-index: 1;
-        }
-
-        .hero small {
-            color: #bb83ff;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            font-size: 12px;
-        }
-
-        h1 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(42px, 7vw, 82px);
+            z-index: 2;
+            font-size: clamp(2.8rem, 8vw, 6.5rem);
+            font-weight: 900;
             letter-spacing: 5px;
-            margin: 15px 0;
-            color: #fff;
+            text-transform: uppercase;
             text-shadow:
-                0 0 15px rgba(157, 73, 255, 0.7),
-                0 0 45px rgba(117, 34, 255, 0.25);
+                0 0 10px #9b4dff,
+                0 0 25px #6f22c9,
+                0 0 55px #461184;
+            animation: aparecer 1.5s ease forwards, flutuar 4s ease-in-out infinite;
         }
 
-        .hero p {
+        .logo span {
+            color: #c875ff;
+        }
+
+        .subtitulo {
+            position: relative;
+            z-index: 2;
+            margin-top: 15px;
+            color: #d8c5e9;
+            font-size: clamp(1rem, 2vw, 1.35rem);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            animation: aparecer 2s ease forwards;
+        }
+
+        .descricao {
+            position: relative;
+            z-index: 2;
             max-width: 720px;
-            margin: auto;
-            color: #c8bdd3;
-            line-height: 1.8;
-            font-size: 15px;
+            margin-top: 25px;
+            line-height: 1.7;
+            color: #bdb1c8;
+            font-size: 1rem;
         }
 
-        /* ---------- INTRODUÇÃO ---------- */
-
-        .intro {
-            max-width: 900px;
-            margin: 70px auto 45px;
-            padding: 0 25px;
-            text-align: center;
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .intro h2 {
-            font-family: 'Cinzel', serif;
-            color: #c995ff;
-            font-size: 30px;
-            margin-bottom: 18px;
+        @keyframes flutuar {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
         }
 
-        .intro p {
-            color: #aaa0b3;
-            line-height: 1.9;
+        .linha {
+            width: 120px;
+            height: 4px;
+            margin-top: 30px;
+            background: linear-gradient(90deg, transparent, #b65cff, transparent);
+            box-shadow: 0 0 15px #9b42ff;
         }
 
-        /* ---------- PERSONAGENS ---------- */
-
-        .characters {
-            width: 94%;
+        main {
             max-width: 1500px;
             margin: auto;
-            display: grid;
+            padding: 20px 30px 80px;
+        }
 
-            /* Seis personagens lado a lado */
-            grid-template-columns: repeat(6, 1fr);
+        .titulo-secao {
+            text-align: center;
+            margin-bottom: 35px;
+        }
 
-            gap: 18px;
-            padding-bottom: 80px;
+        .titulo-secao h2 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(169, 82, 255, 0.8);
+        }
+
+        .titulo-secao p {
+            color: #a99db2;
+        }
+
+        /*
+            Os seis cards ficam lado a lado.
+            Em telas menores, permitem rolagem horizontal.
+        */
+        .personagens {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 20px 5px 35px;
+            scroll-snap-type: x mandatory;
+        }
+
+        .personagens::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .personagens::-webkit-scrollbar-track {
+            background: #0b0710;
+            border-radius: 20px;
+        }
+
+        .personagens::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, #7020b8, #c35cff);
+            border-radius: 20px;
         }
 
         .card {
+            flex: 0 0 220px;
+            min-height: 440px;
             position: relative;
-            min-height: 510px;
             overflow: hidden;
-            border-radius: 15px;
-            background: #100b16;
-            border: 1px solid rgba(177, 101, 255, 0.28);
+            border-radius: 22px;
+            background: linear-gradient(160deg, #18101e, #08070c);
+            border: 1px solid rgba(190, 91, 255, 0.4);
             box-shadow:
-                0 15px 45px rgba(0, 0, 0, 0.5),
-                0 0 25px rgba(112, 42, 190, 0.08);
-            transition: 0.45s ease;
+                0 10px 35px rgba(0,0,0,0.55),
+                0 0 20px rgba(125, 40, 190, 0.12);
+            scroll-snap-align: start;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: cardEntrada 0.8s ease backwards;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+        .card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes cardEntrada {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .card:hover {
-            transform: translateY(-12px);
-            border-color: rgba(190, 116, 255, 0.7);
+            transform: translateY(-14px) scale(1.025);
             box-shadow:
-                0 20px 60px rgba(0, 0, 0, 0.7),
-                0 0 35px rgba(132, 51, 220, 0.28);
+                0 20px 45px rgba(0,0,0,0.7),
+                0 0 35px rgba(172, 72, 255, 0.35);
         }
 
-        .card img {
-            width: 100%;
-            height: 270px;
-            object-fit: cover;
-            display: block;
-            filter: grayscale(20%) brightness(0.72);
-            transition: 0.5s ease;
-        }
-
-        .card:hover img {
-            transform: scale(1.06);
-            filter: grayscale(0%) brightness(0.9);
-        }
-
-        .card-content {
-            padding: 22px;
+        .foto {
+            height: 245px;
+            overflow: hidden;
             position: relative;
-            z-index: 2;
         }
 
-        .number {
-            color: #8d45c8;
-            font-size: 11px;
-            letter-spacing: 3px;
+        .foto::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                transparent 55%,
+                rgba(7,4,12,0.95)
+            );
         }
 
-        .card h3 {
-            font-family: 'Cinzel', serif;
-            color: #e6c7ff;
-            font-size: 21px;
-            margin: 7px 0 13px;
+        .foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
         }
 
-        .card p {
-            color: #aaa0ae;
-            font-size: 13px;
-            line-height: 1.75;
+        .card:hover .foto img {
+            transform: scale(1.12);
         }
 
-        .role {
+        .numero {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            z-index: 3;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(10, 5, 16, 0.85);
+            border: 1px solid #c35cff;
+            box-shadow: 0 0 15px rgba(195, 92, 255, 0.6);
+            font-weight: bold;
+        }
+
+        .conteudo {
+            padding: 5px 18px 22px;
+        }
+
+        .conteudo h3 {
+            color: #dfb4ff;
+            font-size: 1.35rem;
+            margin-bottom: 8px;
+        }
+
+        .apelido {
             display: inline-block;
-            margin-top: 17px;
-            padding: 6px 12px;
-            border-radius: 30px;
-            background: rgba(135, 54, 207, 0.14);
-            border: 1px solid rgba(166, 92, 238, 0.3);
-            color: #bd83eb;
-            font-size: 10px;
+            font-size: 0.72rem;
             letter-spacing: 1px;
+            color: #9e78b5;
             text-transform: uppercase;
+            margin-bottom: 12px;
         }
 
-        /* ---------- HISTÓRIA ---------- */
-
-        .story {
-            max-width: 1000px;
-            margin: 20px auto 90px;
-            padding: 55px 30px;
-            text-align: center;
-            border-top: 1px solid rgba(168, 88, 240, 0.2);
-            border-bottom: 1px solid rgba(168, 88, 240, 0.2);
+        .conteudo p {
+            color: #aaa1ae;
+            font-size: 0.9rem;
+            line-height: 1.55;
         }
 
-        .story h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 30px;
-            color: #d5a5ff;
-            margin-bottom: 20px;
+        .tag {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background: rgba(139, 47, 190, 0.15);
+            border: 1px solid rgba(191, 92, 255, 0.35);
+            color: #c98bea;
+            font-size: 0.72rem;
         }
 
-        .story p {
-            color: #aaa0ae;
-            line-height: 2;
-            font-size: 14px;
+        .informacao {
+            margin-top: 50px;
+            padding: 35px;
+            border-radius: 25px;
+            background: rgba(15, 9, 21, 0.8);
+            border: 1px solid rgba(176, 79, 240, 0.25);
+            box-shadow: 0 0 40px rgba(87, 24, 128, 0.15);
         }
 
-        /* ---------- RODAPÉ ---------- */
+        .informacao h2 {
+            color: #d99cff;
+            margin-bottom: 15px;
+        }
+
+        .informacao p {
+            color: #b6acba;
+            line-height: 1.8;
+        }
 
         footer {
             text-align: center;
-            padding: 35px 20px;
-            background: #07050a;
-            border-top: 1px solid rgba(154, 72, 229, 0.2);
-            color: #756c7c;
-            font-size: 12px;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(187, 90, 255, 0.2);
+            color: #786d7d;
+            font-size: 0.85rem;
         }
 
-        footer span {
-            color: #9d5bd3;
+        footer strong {
+            color: #b866e8;
         }
 
-        /* ---------- RESPONSIVIDADE ---------- */
-
-        @media (max-width: 1250px) {
-            .characters {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
+        /* Responsividade */
         @media (max-width: 700px) {
+
             header {
-                min-height: 280px;
+                min-height: 410px;
+                padding: 40px 18px;
             }
 
-            .hero small {
-                letter-spacing: 3px;
-            }
-
-            .characters {
-                grid-template-columns: 1fr;
-                width: 88%;
-            }
-
-            .card {
-                min-height: auto;
-            }
-
-            .card img {
+            header::after {
+                width: 320px;
                 height: 320px;
             }
 
-            .intro {
-                margin-top: 50px;
+            .logo {
+                letter-spacing: 2px;
+            }
+
+            .subtitulo {
+                letter-spacing: 2px;
+            }
+
+            main {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .personagens {
+                gap: 15px;
+            }
+
+            .card {
+                flex-basis: 245px;
+            }
+
+            .informacao {
+                padding: 25px 20px;
             }
         }
 
-        @media (min-width: 701px) and (max-width: 1000px) {
-            .characters {
-                grid-template-columns: repeat(2, 1fr);
+        @media (min-width: 1400px) {
+            .personagens {
+                overflow-x: visible;
+            }
+
+            .card {
+                flex: 1 1 0;
             }
         }
     </style>
@@ -279,233 +409,259 @@
 
 <body>
 
-<header>
-    <div class="hero">
-        <small>Crime • Mistério • Investigação</small>
+    <header>
 
-        <h1>DUSKWOOD</h1>
+        <div class="logo">
+            ONE <span>PIECE</span>
+        </div>
 
-        <p>
-            Entre em uma investigação cercada por segredos,
-            desaparecimentos e escolhas difíceis.
-            Descubra os personagens que tornam Duskwood
-            uma experiência misteriosa e inesquecível.
+        <div class="subtitulo">
+            A Pior Geração
+        </div>
+
+        <div class="linha"></div>
+
+        <p class="descricao">
+            Os piratas que desafiaram o mundo e chegaram ao centro dos maiores
+            acontecimentos da Grande Era dos Piratas. Conheça alguns dos
+            personagens mais marcantes da chamada <strong>Pior Geração</strong>.
         </p>
-    </div>
-</header>
+
+    </header>
+
+    <main>
+
+        <section>
+
+            <div class="titulo-secao">
+                <h2>⚓ Os nomes da Pior Geração</h2>
+                <p>Seis piratas que deixaram sua marca na história</p>
+            </div>
+
+            <div class="personagens">
+
+                <!-- LUFFY -->
+                <article class="card">
+
+                    <div class="foto">
+                        <div class="numero">01</div>
+
+                        <img
+                            src="https://commons.wikimedia.org/wiki/Special:FilePath/Monkey%20D.%20Luffy.jpg"
+                            alt="Monkey D. Luffy">
+                    </div>
+
+                    <div class="conteudo">
+
+                        <h3>Monkey D. Luffy</h3>
+
+                        <span class="apelido">
+                            Chapéu de Palha
+                        </span>
+
+                        <p>
+                            Capitão dos Piratas do Chapéu de Palha.
+                            Representa liberdade, determinação e o sonho
+                            de encontrar o lendário One Piece.
+                        </p>
+
+                        <span class="tag">Capitão • Yonko</span>
+
+                    </div>
+
+                </article>
 
 
-<section class="intro">
+                <!-- ZORO -->
+                <article class="card">
 
-    <h2>Os personagens</h2>
+                    <div class="foto">
+                        <div class="numero">02</div>
 
-    <p>
-        Cada pessoa envolvida na investigação possui seus próprios
-        segredos, personalidades e motivos. Conheça alguns dos
-        personagens mais importantes da história de Duskwood.
-    </p>
+                        <img
+                            src="https://commons.wikimedia.org/wiki/Special:FilePath/Roronoa%20Zoro.jpg"
+                            alt="Roronoa Zoro">
+                    </div>
 
-</section>
+                    <div class="conteudo">
+
+                        <h3>Roronoa Zoro</h3>
+
+                        <span class="apelido">
+                            Caçador de Piratas
+                        </span>
+
+                        <p>
+                            Espadachim dos Chapéus de Palha e um dos
+                            companheiros mais importantes de Luffy.
+                            Sua ambição é tornar-se o maior espadachim
+                            do mundo.
+                        </p>
+
+                        <span class="tag">Espadachim • Supernova</span>
+
+                    </div>
+
+                </article>
 
 
-<section class="characters">
+                <!-- LAW -->
+                <article class="card">
 
-    <!-- JAKE -->
+                    <div class="foto">
+                        <div class="numero">03</div>
 
-    <article class="card">
+                        <img
+                            src="https://commons.wikimedia.org/wiki/Special:FilePath/Trafalgar%20Law.jpg"
+                            alt="Trafalgar Law">
+                    </div>
 
-        <img
-            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=800&q=80"
-            alt="Jake">
+                    <div class="conteudo">
 
-        <div class="card-content">
+                        <h3>Trafalgar Law</h3>
 
-            <span class="number">01 — INVESTIGADOR</span>
+                        <span class="apelido">
+                            Cirurgião da Morte
+                        </span>
 
-            <h3>Jake</h3>
+                        <p>
+                            Capitão dos Piratas Heart. Inteligente,
+                            estratégico e usuário da Ope Ope no Mi.
+                            Sua trajetória se cruza diversas vezes
+                            com a de Luffy.
+                        </p>
+
+                        <span class="tag">Capitão • Supernova</span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- KID -->
+                <article class="card">
+
+                    <div class="foto">
+                        <div class="numero">04</div>
+
+                        <img
+                            src="https://commons.wikimedia.org/wiki/Special:FilePath/Eustass%20Kid.jpg"
+                            alt="Eustass Kid">
+                    </div>
+
+                    <div class="conteudo">
+
+                        <h3>Eustass Kid</h3>
+
+                        <span class="apelido">
+                            Capitão Kid
+                        </span>
+
+                        <p>
+                            Um dos piratas mais agressivos da Pior Geração.
+                            Conhecido por sua personalidade explosiva,
+                            enorme ambição e poder magnético.
+                        </p>
+
+                        <span class="tag">Capitão • Supernova</span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BONNEY -->
+                <article class="card">
+
+                    <div class="foto">
+                        <div class="numero">05</div>
+
+                        <img
+                            src="https://commons.wikimedia.org/wiki/Special:FilePath/Bonney%20One%20Piece.jpg"
+                            alt="Jewelry Bonney">
+                    </div>
+
+                    <div class="conteudo">
+
+                        <h3>Jewelry Bonney</h3>
+
+                        <span class="apelido">
+                            A Glutona
+                        </span>
+
+                        <p>
+                            Capitã dos Piratas Bonney e uma das integrantes
+                            da Pior Geração. Sua habilidade permite alterar
+                            sua idade e a de outras pessoas.
+                        </p>
+
+                        <span class="tag">Capitã • Supernova</span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BLACKBEARD -->
+                <article class="card">
+
+                    <div class="foto">
+                        <div class="numero">06</div>
+
+                        <img
+                            src="https://commons.wikimedia.org/wiki/Special:FilePath/Marshall%20D.%20Teach.jpg"
+                            alt="Marshall D. Teach">
+                    </div>
+
+                    <div class="conteudo">
+
+                        <h3>Marshall D. Teach</h3>
+
+                        <span class="apelido">
+                            Barba Negra
+                        </span>
+
+                        <p>
+                            Um dos nomes mais perigosos ligados à Pior
+                            Geração. Sua ambição e suas ações tiveram
+                            enorme impacto na nova era dos piratas.
+                        </p>
+
+                        <span class="tag">Capitão • Yonko</span>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <section class="informacao">
+
+            <h2>☠️ O que é a Pior Geração?</h2>
 
             <p>
-                Um dos personagens mais misteriosos da investigação.
-                Jake possui grandes conhecimentos de tecnologia e
-                ajuda o protagonista a descobrir pistas relacionadas
-                ao desaparecimento de Hannah.
+                A Pior Geração é formada pelos piratas considerados extremamente
+                perigosos e influentes que surgiram na mesma época. O grupo é
+                composto pelos onze Supernovas que chegaram ao Arquipélago
+                Sabaody antes da Guerra dos Maiorais, além de Marshall D. Teach,
+                o Barba Negra. Seus membros possuem ambições diferentes, mas
+                juntos representam uma geração capaz de alterar o equilíbrio
+                do mundo de One Piece.
             </p>
 
-            <span class="role">Hacker • Aliado</span>
+        </section>
 
-        </div>
-
-    </article>
+    </main>
 
 
-    <!-- RICHY -->
-
-    <article class="card">
-
-        <img
-            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80"
-            alt="Richy">
-
-        <div class="card-content">
-
-            <span class="number">02 — MECÂNICO</span>
-
-            <h3>Richy</h3>
-
-            <p>
-                Dono da oficina de Duskwood e uma das pessoas
-                envolvidas no grupo de investigação. Seu jeito
-                descontraído esconde acontecimentos importantes
-                para a história.
-            </p>
-
-            <span class="role">Amigo • Suspeito</span>
-
-        </div>
-
-    </article>
-
-
-    <!-- JESSY -->
-
-    <article class="card">
-
-        <img
-            src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80"
-            alt="Jessy">
-
-        <div class="card-content">
-
-            <span class="number">03 — AMIGA</span>
-
-            <h3>Jessy</h3>
-
-            <p>
-                Jessy é uma das pessoas mais próximas do grupo.
-                Ela demonstra preocupação com o desaparecimento
-                de Hannah e participa ativamente da busca por
-                respostas.
-            </p>
-
-            <span class="role">Aliada • Confidente</span>
-
-        </div>
-
-    </article>
-
-
-    <!-- THOMAS -->
-
-    <article class="card">
-
-        <img
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
-            alt="Thomas">
-
-        <div class="card-content">
-
-            <span class="number">04 — INVESTIGADOR</span>
-
-            <h3>Thomas</h3>
-
-            <p>
-                Thomas é uma das pessoas mais afetadas pelo
-                desaparecimento de Hannah. Sua ligação com ela
-                faz com que esteja profundamente envolvido na
-                investigação.
-            </p>
-
-            <span class="role">Amigo • Investigador</span>
-
-        </div>
-
-    </article>
-
-
-    <!-- CLEO -->
-
-    <article class="card">
-
-        <img
-            src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=800&q=80"
-            alt="Cleo">
-
-        <div class="card-content">
-
-            <span class="number">05 — AVENTUREIRA</span>
-
-            <h3>Cleo</h3>
-
-            <p>
-                Determinada e corajosa, Cleo participa das buscas
-                e não tem medo de correr riscos para descobrir
-                o que realmente aconteceu em Duskwood.
-            </p>
-
-            <span class="role">Aliada • Corajosa</span>
-
-        </div>
-
-    </article>
-
-
-    <!-- DAN -->
-
-    <article class="card">
-
-        <img
-            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80"
-            alt="Dan">
-
-        <div class="card-content">
-
-            <span class="number">06 — INVESTIGADOR</span>
-
-            <h3>Dan</h3>
-
-            <p>
-                Dan é conhecido por sua personalidade forte e
-                seu comportamento direto. Apesar das discussões,
-                ele acaba se tornando uma peça importante na
-                investigação.
-            </p>
-
-            <span class="role">Aliado • Impulsivo</span>
-
-        </div>
-
-    </article>
-
-</section>
-
-
-<section class="story">
-
-    <h2>Uma cidade cheia de segredos</h2>
-
-    <p>
-        Duskwood parece ser apenas uma pequena cidade cercada
-        por uma floresta misteriosa. Porém, depois que Hannah
-        desaparece, uma série de acontecimentos estranhos começa
-        a revelar que existe muito mais escondido por trás das
-        pessoas e dos acontecimentos locais.
+    <footer>
+        <strong>ONE PIECE</strong> — A Pior Geração
         <br><br>
-        Como protagonista, você precisa conversar com os
-        personagens, analisar pistas, tomar decisões e descobrir
-        em quem pode confiar.
-    </p>
-
-</section>
-
-
-<footer>
-
-    DUSKWOOD — CRIME & DETETIVE<br>
-
-    <span>Uma investigação onde cada escolha pode mudar tudo.</span>
-
-</footer>
+        Site criado em HTML e CSS para fins de estudo e entretenimento.
+    </footer>
 
 </body>
 </html>
-```
