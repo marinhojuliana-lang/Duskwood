@@ -1,11 +1,14 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Duskwood — Crime e Detetive</title>
+    <title>Duskwood — Crime & Detetive</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -14,37 +17,42 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: "Segoe UI", Arial, sans-serif;
             background:
-                radial-gradient(circle at top, #32104f 0%, #100916 35%, #050507 75%);
-            color: #f5efff;
+                radial-gradient(circle at top, #32105c 0%, #130a20 35%, #050507 75%);
+            color: #f4ecff;
+            font-family: "Inter", sans-serif;
             min-height: 100vh;
         }
 
-        /* CABEÇALHO */
+        /* ===== CABEÇALHO ===== */
 
         header {
-            min-height: 330px;
+            min-height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
             position: relative;
             overflow: hidden;
-            border-bottom: 1px solid #6d3c91;
         }
 
         header::before {
             content: "";
             position: absolute;
-            width: 450px;
-            height: 450px;
-            background: #7b2cbf;
-            filter: blur(150px);
-            opacity: 0.18;
+            width: 600px;
+            height: 600px;
+            background: rgba(139, 62, 255, 0.18);
+            filter: blur(120px);
             border-radius: 50%;
+            top: -250px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .hero {
@@ -53,140 +61,559 @@
             max-width: 900px;
         }
 
-        .hero h1 {
-            font-size: clamp(42px, 7vw, 82px);
-            letter-spacing: 8px;
+        .tag {
+            display: inline-block;
+            border: 1px solid rgba(184, 120, 255, 0.5);
+            color: #cfa8ff;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 12px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            text-shadow: 0 0 25px #9d4edd;
+            margin-bottom: 25px;
+            background: rgba(80, 25, 130, 0.15);
         }
 
-        .hero h2 {
-            margin-top: 15px;
-            color: #c77dff;
-            font-weight: 400;
-            letter-spacing: 4px;
+        h1 {
+            font-family: "Cinzel", serif;
+            font-size: clamp(42px, 8vw, 90px);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow:
+                0 0 10px rgba(180, 100, 255, 0.8),
+                0 0 40px rgba(130, 40, 220, 0.35);
         }
 
         .hero p {
-            margin-top: 25px;
-            color: #cfc3d8;
-            line-height: 1.7;
+            color: #c7b9d4;
             font-size: 17px;
-        }
-
-        /* INTRODUÇÃO */
-
-        .intro {
-            max-width: 1000px;
-            margin: auto;
-            padding: 70px 25px 45px;
-            text-align: center;
-        }
-
-        .intro h2 {
-            font-size: 32px;
-            color: #c77dff;
-            margin-bottom: 20px;
-        }
-
-        .intro p {
-            color: #c8bfd0;
             line-height: 1.8;
-            font-size: 16px;
+            max-width: 700px;
+            margin: auto;
         }
 
-        /* GALERIA */
-
-        .galeria {
-            width: 94%;
-            max-width: 1500px;
-            margin: 20px auto 80px;
+        .scroll {
+            margin-top: 50px;
+            color: #9c71c7;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: pulse 2s infinite;
         }
 
-        .cards {
+        @keyframes pulse {
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        /* ===== CONTEÚDO ===== */
+
+        main {
+            width: min(1400px, 92%);
+            margin: auto;
+            padding-bottom: 100px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 80px 0 45px;
+        }
+
+        .section-title h2 {
+            font-family: "Cinzel", serif;
+            font-size: clamp(26px, 4vw, 42px);
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #9f8faa;
+            font-size: 14px;
+        }
+
+        /* ===== SEIS FOTOS ===== */
+
+        .gallery {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-            gap: 15px;
+            gap: 14px;
         }
 
         .card {
-            background: rgba(19, 11, 27, 0.92);
-            border: 1px solid #492461;
-            border-radius: 12px;
+            position: relative;
             overflow: hidden;
-            transition: 0.4s ease;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.5);
+            min-height: 480px;
+            border: 1px solid rgba(163, 94, 235, 0.3);
+            background: #0b0810;
+            transition: 0.5s ease;
         }
 
         .card:hover {
             transform: translateY(-10px);
-            border-color: #a855f7;
-            box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
+            border-color: #a45cff;
+            box-shadow:
+                0 20px 50px rgba(109, 30, 190, 0.35),
+                0 0 25px rgba(158, 76, 255, 0.12);
         }
 
         .card img {
             width: 100%;
-            height: 280px;
+            height: 100%;
+            min-height: 480px;
             object-fit: cover;
             display: block;
-            filter: brightness(0.75) contrast(1.1);
-            transition: 0.4s;
+            filter: grayscale(35%) brightness(0.65);
+            transition: 0.6s ease;
         }
 
         .card:hover img {
-            filter: brightness(1) contrast(1.1);
-            transform: scale(1.04);
+            transform: scale(1.08);
+            filter: grayscale(10%) brightness(0.8);
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(4, 2, 8, 0.98) 0%,
+                    rgba(8, 4, 14, 0.82) 38%,
+                    rgba(10, 5, 18, 0.05) 75%
+                );
         }
 
         .card-content {
-            padding: 20px;
+            position: absolute;
+            z-index: 2;
+            left: 20px;
+            right: 20px;
+            bottom: 22px;
         }
 
-        .card-number {
-            color: #9d4edd;
+        .number {
+            color: #a963ff;
+            font-family: "Cinzel", serif;
             font-size: 13px;
             letter-spacing: 3px;
         }
 
         .card h3 {
-            margin: 8px 0 12px;
-            color: #e0aaff;
+            font-family: "Cinzel", serif;
             font-size: 20px;
+            margin: 8px 0;
+            letter-spacing: 1px;
         }
 
         .card p {
-            color: #bcb1c4;
+            color: #c9bfd2;
+            font-size: 13px;
             line-height: 1.6;
-            font-size: 14px;
         }
 
-        /* DESTAQUE */
+        /* ===== HISTÓRIA ===== */
 
-        .misterio {
-            max-width: 1000px;
-            margin: 0 auto 80px;
-            padding: 45px 30px;
-            text-align: center;
-            border-top: 1px solid #47245d;
-            border-bottom: 1px solid #47245d;
+        .story {
+            max-width: 900px;
+            margin: 90px auto 0;
+            padding: 45px;
+            border: 1px solid rgba(155, 85, 225, 0.25);
+            background: rgba(20, 10, 30, 0.65);
+            backdrop-filter: blur(10px);
+            position: relative;
         }
 
-        .misterio h2 {
-            color: #c77dff;
+        .story::before {
+            content: "DUSKWOOD";
+            position: absolute;
+            top: -13px;
+            left: 30px;
+            background: #130a20;
+            padding: 0 15px;
+            color: #a963ff;
+            font-size: 11px;
+            letter-spacing: 4px;
+        }
+
+        .story h2 {
+            font-family: "Cinzel", serif;
+            margin-bottom: 20px;
             font-size: 30px;
+        }
+
+        .story p {
+            color: #b8aabd;
+            line-height: 1.9;
             margin-bottom: 15px;
         }
 
-        .misterio p {
-            color: #bcb1c4;
-            line-height: 1.8;
+        /* ===== CARACTERÍSTICAS ===== */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 35px;
         }
 
-        /* RODAPÉ */
+        .feature {
+            padding: 28px;
+            background: rgba(22, 11, 33, 0.75);
+            border: 1px solid rgba(157, 87, 221, 0.22);
+            transition: 0.3s;
+        }
+
+        .feature:hover {
+            border-color: rgba(176, 100, 255, 0.7);
+            transform: translateY(-5px);
+        }
+
+        .feature span {
+            font-size: 28px;
+        }
+
+        .feature h3 {
+            font-family: "Cinzel", serif;
+            margin: 15px 0 8px;
+            font-size: 18px;
+        }
+
+        .feature p {
+            color: #998ba5;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* ===== RODAPÉ ===== */
 
         footer {
-            text-align: center;
+            border-top: 1px solid rgba(155, 85, 225, 0.18);
             padding: 35px 20px;
-            background: #070509;
-            border-top: 1px solid #32153f;
-```
+            text-align: center;
+            color: #71667a;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        footer strong {
+            color: #a963ff;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+
+        @media (max-width: 1100px) {
+            .gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .card {
+                min-height: 430px;
+            }
+
+            .card img {
+                min-height: 430px;
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            header {
+                min-height: 80vh;
+            }
+
+            h1 {
+                letter-spacing: 4px;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .card {
+                min-height: 350px;
+            }
+
+            .card img {
+                min-height: 350px;
+            }
+
+            .card-content {
+                left: 14px;
+                right: 14px;
+                bottom: 16px;
+            }
+
+            .card h3 {
+                font-size: 16px;
+            }
+
+            .card p {
+                font-size: 11px;
+            }
+
+            .story {
+                padding: 30px 22px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .card,
+            .card img {
+                min-height: 430px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="hero">
+
+        <div class="tag">
+            Crime • Mistério • Investigação
+        </div>
+
+        <h1>Duskwood</h1>
+
+        <p>
+            Uma cidade cercada por uma floresta sombria.
+            Uma garota desaparecida.
+            Um grupo de amigos cheio de segredos.
+            E agora, uma mensagem que coloca você no centro da investigação.
+        </p>
+
+        <div class="scroll">
+            ↓ Entre na investigação ↓
+        </div>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section>
+
+        <div class="section-title">
+            <h2>As pistas de Duskwood</h2>
+            <p>Seis elementos que representam a atmosfera da investigação</p>
+        </div>
+
+        <div class="gallery">
+
+            <!-- FOTO 01 -->
+            <article class="card">
+                <img
+                    src="https://everbytestudio.com/Press/sheet.php?p=duskwood"
+                    alt="Imagem promocional de Duskwood"
+                >
+
+                <div class="card-content">
+                    <span class="number">01</span>
+                    <h3>O Mistério</h3>
+                    <p>
+                        A história começa com o desaparecimento de Hannah.
+                        Uma mensagem inesperada transforma você em parte do caso.
+                    </p>
+                </div>
+            </article>
+
+
+            <!-- FOTO 02 -->
+            <article class="card">
+                <img
+                    src="https://everbytestudio.com/Press/sheet.php?p=duskwood"
+                    alt="Duskwood investigação"
+                >
+
+                <div class="card-content">
+                    <span class="number">02</span>
+                    <h3>As Mensagens</h3>
+                    <p>
+                        Grande parte da investigação acontece através de
+                        conversas, mensagens, fotos, vídeos e áudios.
+                    </p>
+                </div>
+            </article>
+
+
+            <!-- FOTO 03 -->
+            <article class="card">
+                <img
+                    src="https://everbytestudio.com/Press/sheet.php?p=duskwood"
+                    alt="Personagens de Duskwood"
+                >
+
+                <div class="card-content">
+                    <span class="number">03</span>
+                    <h3>Os Suspeitos</h3>
+                    <p>
+                        Conheça diferentes personagens e descubra que cada
+                        pessoa pode esconder informações importantes.
+                    </p>
+                </div>
+            </article>
+
+
+            <!-- FOTO 04 -->
+            <article class="card">
+                <img
+                    src="https://everbytestudio.com/Press/sheet.php?p=duskwood"
+                    alt="Pistas e investigação em Duskwood"
+                >
+
+                <div class="card-content">
+                    <span class="number">04</span>
+                    <h3>As Evidências</h3>
+                    <p>
+                        Fotos, informações e conversas podem revelar pistas.
+                        Cabe ao jogador juntar os fragmentos da investigação.
+                    </p>
+                </div>
+            </article>
+
+
+            <!-- FOTO 05 -->
+            <article class="card">
+                <img
+                    src="https://everbytestudio.com/Press/sheet.php?p=duskwood"
+                    alt="Quebra-cabeças de Duskwood"
+                >
+
+                <div class="card-content">
+                    <span class="number">05</span>
+                    <h3>Os Desafios</h3>
+                    <p>
+                        Mini-jogos e quebra-cabeças fazem parte da experiência
+                        e podem ajudar a desbloquear novas partes da história.
+                    </p>
+                </div>
+            </article>
+
+
+            <!-- FOTO 06 -->
+            <article class="card">
+                <img
+                    src="https://everbytestudio.com/Press/sheet.php?p=duskwood"
+                    alt="Atmosfera misteriosa de Duskwood"
+                >
+
+                <div class="card-content">
+                    <span class="number">06</span>
+                    <h3>A Floresta</h3>
+                    <p>
+                        Duskwood é uma pequena vila cercada por uma floresta
+                        densa, criando a atmosfera misteriosa que envolve o caso.
+                    </p>
+                </div>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <section class="story">
+
+        <h2>O caso começa aqui...</h2>
+
+        <p>
+            Faz 72 horas que Hannah desapareceu sem deixar rastros.
+            Então, seus amigos recebem uma mensagem enviada pelo telefone
+            da garota desaparecida.
+        </p>
+
+        <p>
+            A mensagem contém apenas um número: o seu.
+            A partir desse momento, você é envolvido em uma investigação
+            cheia de escolhas, segredos e desconfianças.
+        </p>
+
+        <p>
+            Para descobrir a verdade, será necessário conversar com os
+            personagens, analisar pistas, solucionar quebra-cabeças e
+            decidir cuidadosamente em quem confiar.
+        </p>
+
+    </section>
+
+
+    <section>
+
+        <div class="section-title">
+            <h2>Uma investigação diferente</h2>
+            <p>O que torna a experiência de Duskwood tão envolvente</p>
+        </div>
+
+        <div class="features">
+
+            <div class="feature">
+                <span>🔎</span>
+                <h3>Investigue</h3>
+                <p>
+                    Procure evidências e conecte informações para avançar
+                    na investigação.
+                </p>
+            </div>
+
+            <div class="feature">
+                <span>💬</span>
+                <h3>Converse</h3>
+                <p>
+                    Interaja com os personagens através de um sistema
+                    inspirado em aplicativos de mensagens.
+                </p>
+            </div>
+
+            <div class="feature">
+                <span>🧩</span>
+                <h3>Resolva</h3>
+                <p>
+                    Encare quebra-cabeças e mini-jogos durante sua busca
+                    pelas respostas.
+                </p>
+            </div>
+
+            <div class="feature">
+                <span>⚠️</span>
+                <h3>Escolha</h3>
+                <p>
+                    Suas decisões podem influenciar as relações e o
+                    desenvolvimento da história.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    <strong>DUSKWOOD</strong> — Crime & Detetive
+    <br><br>
+    Um site criado para fãs do universo de investigação e mistério.
+</footer>
+
+</body>
+</html>
